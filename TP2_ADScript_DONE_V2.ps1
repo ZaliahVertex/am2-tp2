@@ -116,7 +116,8 @@ function srvPrcsMenu{
 		switch ($choice) {
 			"1" {
 				cls
-				$cpu = Get-Process | ? { $_.CPU -gt 10 } | Select-Object ProcessName, Id, @{Name = 'CPU(s)';Expression={ "{0:N1}" -f $_.CPU }} | Out-String
+				#Rounding the CPU time seconds to 1 decimal for readability, updated CPU time from 10 to 100 as per the homework instructions
+				$cpu = Get-Process | ? { $_.CPU -gt 100 } | Select-Object ProcessName, Id, @{Name = 'CPU(s)';Expression={ "{0:N1}" -f $_.CPU }} | Out-String
 				$cpu
 				pauseMenu
 			}
